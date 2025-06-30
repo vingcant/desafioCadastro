@@ -1,14 +1,15 @@
 package menuservices;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class InitialMenu {
     Scanner input = new Scanner(System.in);
-    private registerNewPet newPet;
+    private ReadNewPet newPet;
+    private Pet pet;
 
-    public InitialMenu(registerNewPet newPet) {
+    public InitialMenu(ReadNewPet newPet, Pet pet) {
         this.newPet = newPet;
+        this.pet = pet;
     }
 
 
@@ -33,6 +34,7 @@ public class InitialMenu {
             switch (option) {
                 case "1":
                     newPet.superRead();
+                    pet.cadastro();
                     break;
                 case "2":
 
