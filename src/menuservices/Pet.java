@@ -1,26 +1,26 @@
 package menuservices;
+
 import exception.InvalidName;
+
 import java.util.Scanner;
 
 public class Pet {
-    Race race;
-    Sex sex;
+    private Race race;
+    private Sex sex;
     final String NOT_INFORMED = "Não informado";
     Scanner input = new Scanner(System.in);
-    String answer;
+
     boolean validation;
-    boolean numHouse;
-    boolean city;
-    boolean street;
 
     public void cadastro() {
         System.out.println("Digite a seguir as respostas de acordo com a numeração.");
         System.out.println("Apenas nome e sobrenome com letra maiscula são permitidos.");
         do {
+            String answerCadastro;
             System.out.print("1: ");
-            answer = input.nextLine();
+            answerCadastro = input.nextLine();
 
-            validation = answer.matches("([A-Z]+)\s+([A-Z]+)");
+            validation = answerCadastro.matches("([A-Z]+)\s+([A-Z]+)");
             if (!validation) {
                 try {
                     throw new InvalidName();
@@ -29,43 +29,68 @@ public class Pet {
                 }
             }
         } while (!validation);
+    }
+
+    public void raceCadastro() {
+
 
         System.out.println("Digite a letra correspondente à raça.");
         do {
+            String answerRace;
             System.out.print("2: ");
-            answer = input.nextLine().toUpperCase();
-            if (Race.validRace(answer)){
-                race = Race.isString(answer);
+            answerRace = input.nextLine().toUpperCase();
+            if (Race.validRace(answerRace)) {
+                race = Race.isString(answerRace);
                 validation = true;
-            }else{
+            } else {
                 System.out.println("Invalid race.");
                 validation = false;
             }
 
         } while (!validation);
+    }
 
+    public void sexCadastro() {
 
         System.out.println("Digite a letra correspondente ao sexo.");
         do {
+            String answerSex;
             System.out.print("3: ");
-            answer = input.nextLine().toUpperCase();
-            if (Sex.validSex(answer)){
-                sex = Sex.isString(answer);
+            answerSex = input.nextLine().toUpperCase();
+            if (Sex.validSex(answerSex)) {
+                sex = Sex.isString(answerSex);
                 validation = true;
-            }else{
+            } else {
                 System.out.println("Unknown sex.");
                 validation = false;
             }
 
         } while (!validation);
 
-        System.out.println("Escreva o endereço onde o animal foi encontrado.");
-        System.out.println("4: ");
+        System.out.println("Digite o endereço por completo: ");
         do {
-            System.out.print("Número da casa: ");
-            answer = input.nextLine();
+            System.out.println("4: ");
+            System.out.print("Endereço: ");
+            String answerAddress = input.nextLine();
+            if (!answerAddress.matches("([A-Z\\sa-z])+([0-9])+")) {
+                System.out.println("Endereço inválido com o reconhecido pelo sistema.");
+                validation = false;
+                continue;
+            }
+            System.out.print("Cidade: ");
+            String answerCity = input.nextLine();
+            if (!answerCity.matches("([A-Z\\sa-z])+")) {
+                System.out.println("Cidade inválida pelo sistema.");
+                validation = false;
+                continue;
+            }
+            System.out.print("Rua: ");
+            String answerStreet = input.nextLine();
+            if (!answerStreet.matches("([A-Z\\sa-z])+")) {
+                System.out.println("Rua inválida pelo sistema.");
+                validation = false;
+            }
 
-        }while(!numHouse);
-
+        } while (!validation);
     }
 }
