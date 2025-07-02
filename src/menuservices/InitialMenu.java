@@ -35,6 +35,12 @@ public class InitialMenu {
                 case "1":
                     newPet.superRead();
                     pet.cadastro();
+                    pet.raceCadastro();
+                    pet.sexCadastro();
+                    pet.address();
+                    pet.age();
+                    pet.height();
+                    pet.animalRace();
                     break;
                 case "2":
 
