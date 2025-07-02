@@ -66,7 +66,9 @@ public class Pet {
             }
 
         } while (!validation);
+    }
 
+    public void address() {
         System.out.println("Digite o endereço por completo: ");
         do {
             System.out.println("4: ");
@@ -92,5 +94,29 @@ public class Pet {
             }
 
         } while (!validation);
+    }
+
+    public void age() {
+        System.out.println("Digite a idade aproximada/aparente do animal: ");
+        System.out.print("5: ");
+
+        String answerAge = input.nextLine();
+
+        try{
+            if (!answerAge.matches("^[1-9]\\d?$")){
+                throw new IllegalArgumentException("Idade inválida.");
+            }
+
+
+        int numAge = Integer.parseInt(answerAge);
+
+        if (numAge > 20){
+            throw new IllegalArgumentException("Idade excedida");
+        }else if (numAge < 1 ){
+            System.out.println("0."+numAge);
+        }
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
     }
 }
