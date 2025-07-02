@@ -19,8 +19,8 @@ public class Pet {
             answerCadastro = input.nextLine();
 
             if (answerCadastro.isEmpty()) {
-            answerCadastro = NOT_INFORMED;
-            validation = true;
+                answerCadastro = NOT_INFORMED;
+                validation = true;
             }
 
             validation = answerCadastro.matches("([A-Za-z]+)\\s+([A-Za-z]+)");
@@ -116,7 +116,7 @@ public class Pet {
         }
 
         try {
-            if (!answerAge.matches("^[1-9]\\d?$")) {
+            if (!answerAge.matches("^[0-9]+([,.][0-9]+)?$")) {
                 throw new IllegalArgumentException("Idade inválida.");
             }
 
@@ -145,7 +145,7 @@ public class Pet {
             }
 
 
-            int numHeight = Integer.parseInt(answerHeight);
+            double numHeight = Integer.parseInt(answerHeight);
 
             if (numHeight > 60 || numHeight < 0.5) {
                 throw new IllegalArgumentException("Peso inválido.");
